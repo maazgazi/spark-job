@@ -7,7 +7,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    sh 'docker-compose build'
+                    sh 'docker compose build'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Run the container with docker-compose
-                    sh 'docker-compose up -d'
+                    sh 'docker compose up -d'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Tail the logs of the Spark job to ensure it's running
-                    sh 'docker-compose logs -f'
+                    sh 'docker compose logs -f'
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline {
         always {
             script {
                 // Stop and remove containers after the job
-                sh 'docker-compose down'
+                sh 'docker compose down'
             }
         }
     }
